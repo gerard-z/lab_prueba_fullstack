@@ -1,15 +1,24 @@
 from typing import Union
-
 from fastapi import FastAPI
+from routers import router_base
+import uvicorn
 
-app = FastAPI()
+# iniciar la aplicacion, conectandose a la base de datos
+def init_app():
+    app = FastAPI(
+        title="TCG Backend",
+        version="0.0.1",
+        description="API para el backend de la aplicación TCG como proyecto de prueba",
+        docs_url="/docs",
+        redoc_url="/redoc",
+        openapi_url="/openapi.json",
+    )
 
+    app.include_router(router_base.router)
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+    return app
 
+app = init_app()
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8080, reload=True)
