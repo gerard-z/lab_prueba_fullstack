@@ -18,5 +18,5 @@ class Card(Base, BaseMixin):
     rarity = Column(String)
 
     set = relationship("Set", back_populates="cards")
-    images = relationship("Image", back_populates="card", lazy="joined")
-    markets = relationship("Market", back_populates="card", lazy="joined")
+    images = relationship("Image", back_populates="card")
+    markets = relationship("Market", back_populates="card")
