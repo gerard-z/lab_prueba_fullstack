@@ -1,6 +1,9 @@
 from core.database import Base
 from models.base import BaseMixin
 from sqlalchemy import Column, String, ForeignKey, ARRAY
+from sqlalchemy.orm import relationship
+from models.image import Image
+from models.market import Market
 
 class Card(Base, BaseMixin):
     __tablename__ = "card"
@@ -14,4 +17,6 @@ class Card(Base, BaseMixin):
     number = Column(String,nullable=False)
     rarity = Column(String)
 
-
+    set = relationship("Set", back_populates="cards")
+    images = relationship("Image", back_populates="card", lazy="joined")
+    markets = relationship("Market", back_populates="card", lazy="joined")

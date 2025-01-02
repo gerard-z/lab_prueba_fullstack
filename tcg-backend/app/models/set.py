@@ -1,6 +1,7 @@
 from core.database import Base
 from models.base import BaseMixin, UpdatedTimeMixin
 from sqlalchemy import Column, Integer, String, DATE
+from sqlalchemy.orm import relationship
 
 
 class Set(Base, BaseMixin, UpdatedTimeMixin):
@@ -15,3 +16,5 @@ class Set(Base, BaseMixin, UpdatedTimeMixin):
     release_date = Column(DATE)
     symbol_url = Column(String)
     logo_url = Column(String)
+
+    cards = relationship("Card", back_populates="set")
