@@ -5,6 +5,7 @@ from sqlalchemy.orm import relationship
 from models.image import Image
 from models.market import Market
 
+# Modelo de la tabla card
 class Card(Base, BaseMixin):
     __tablename__ = "card"
 

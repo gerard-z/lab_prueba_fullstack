@@ -3,7 +3,7 @@ from models.base import BaseMixin, UpdatedTimeMixin
 from sqlalchemy import Column, Integer, String, DATE
 from sqlalchemy.orm import relationship
 
-
+# Modelo de la tabla set
 class Set(Base, BaseMixin, UpdatedTimeMixin):
     __tablename__ = "set"
     

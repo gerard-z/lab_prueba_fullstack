@@ -3,6 +3,7 @@ from models.base import BaseMixin
 from sqlalchemy import Column, String, ForeignKey, BigInteger
 from sqlalchemy.orm import relationship
 
+# Modelo de la tabla image
 class Image(Base, BaseMixin):
     __tablename__ = "image"
 

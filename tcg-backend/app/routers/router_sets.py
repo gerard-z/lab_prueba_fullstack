@@ -11,6 +11,10 @@ from dependencies.sets import check_set_id, get_set_by_id
 
 router = APIRouter()
 
+# Devuelve una lista de sets
+# @param skip: int - El número de sets a omitir
+# @param limit: int - El número de sets a devolver
+# @return: List[Set] - Una lista de sets
 @router.get("/", response_model=List[Set])
 def get_sets(
     skip: NonNegativeInt = 0,
@@ -19,7 +23,11 @@ def get_sets(
 ):
     return sets.get_sets(skip, limit, session)
 
-
+# Devuelve una lista de cards de un set
+# @param skip: int - El número de cards a omitir
+# @param limit: int - El número de cards a devolver
+# @param set_id: str - El id del set
+# @return: List[Card] - Una lista de cards
 @router.get("/{set_id}/cards", response_model=List[Card])
 def get_cards_by_set_id(
     skip: NonNegativeInt = 0,

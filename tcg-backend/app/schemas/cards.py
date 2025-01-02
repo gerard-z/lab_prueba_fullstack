@@ -3,6 +3,7 @@ from datetime import date, datetime
 from schemas.image import Image
 from schemas.market import Market
 
+# Esquema de una card
 class Card(OrmBaseModel):
     id: str
     name: str
@@ -13,6 +14,7 @@ class Card(OrmBaseModel):
     number: str
     rarity: str
 
+# Esquema de una card con sus imágenes y mercados
 class CardDetail(Card):
     images: list[Image]
     markets: list[Market]

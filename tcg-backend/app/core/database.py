@@ -6,6 +6,7 @@ import os
 # Definición de la base declarativa para los modelos ORM
 Base = declarative_base()
 
+# Obtención de las variables de entorno
 DATABASE_USER = os.getenv("DATABASE_USER")
 DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
 DATABASE_HOST = os.getenv("DATABASE_HOST")

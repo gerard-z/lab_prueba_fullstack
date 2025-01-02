@@ -7,6 +7,10 @@ from fastapi import Depends
 
 router = APIRouter()
 
+# Obtiene una card por su id
+# @param id: str - El id de la card
+# @param session: SessionDAL - La sesión de la base de datos
+# @return: CardDetail - La card
 @router.get("/{id}", response_model=CardDetail)
 def get_card_by_id(
     id: str,

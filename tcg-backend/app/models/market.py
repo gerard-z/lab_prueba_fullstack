@@ -3,6 +3,7 @@ from models.base import BaseMixin, UpdatedTimeMixin
 from sqlalchemy import Column, String, ForeignKey, BigInteger
 from sqlalchemy.orm import relationship
 
+# Modelo de la tabla market
 class Market(Base, BaseMixin, UpdatedTimeMixin):
     __tablename__ = "market"
 
