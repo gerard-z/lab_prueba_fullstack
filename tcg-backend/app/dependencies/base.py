@@ -3,7 +3,8 @@ from fastapi import status, HTTPException
 from models.base import BaseMixin
 from repository.session import SessionDAL
 from schemas.base import OrmBaseModel
-
+from fastapi import Depends
+from core.database import SessionLocal
 
 def get_model_instance(get_function, *args, session: SessionDAL):
     model_instance = None
@@ -46,3 +47,16 @@ def verify_condition(
 ):
     if not verification_function(*fargs):
         raise HTTPException(status_code=status_code, detail=detail)
+    
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+# Obtiene una session genérica sin requisitos ni User asociado.
+def get_generic_session(db=Depends(get_db)):
+    session = SessionDAL(db)
+    yield session
