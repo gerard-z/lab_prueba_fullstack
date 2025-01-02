@@ -1,5 +1,5 @@
 
-FROM python:3.9
+FROM python:3.12
 
 
 WORKDIR /app
@@ -24,4 +24,4 @@ RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 COPY ./app /app
 
 
-CMD ["fastapi", "run", "main.py", "--port", "8080"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080", "--reload"]
