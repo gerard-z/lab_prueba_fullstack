@@ -23,13 +23,6 @@ function SetList() {
 
   return (
     <>
-    <header>
-      <h1>Pokemon Trading Card Game</h1>
-      <nav>
-        <Link to="/">Inicio</Link>
-        <Link to="/cards">Cartas</Link>
-      </nav>
-    </header>
     <main className="container">
       <h1>Sets de TCG</h1>
       <div className="sets-grid">
