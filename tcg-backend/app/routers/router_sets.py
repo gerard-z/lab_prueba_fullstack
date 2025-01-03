@@ -15,7 +15,7 @@ router = APIRouter()
 # @param skip: int - El número de sets a omitir
 # @param limit: int - El número de sets a devolver
 # @return: List[Set] - Una lista de sets
-@router.get("/", response_model=List[Set])
+@router.get("", response_model=List[Set])
 def get_sets(
     skip: NonNegativeInt = 0,
     limit: PositiveInt = 100,
