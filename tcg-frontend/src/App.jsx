@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router'
 import SetList from './pages/SetList'
 import SetDetail from './pages/SetDetail'
 import CardDetail from './pages/CardDetail'
