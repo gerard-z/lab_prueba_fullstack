@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
 import { API_URL } from '../components/utils/config'
+import SetView from '../components/sets/SetView'
 import './SetList.css'
 function SetList() {
   const [sets, setSets] = useState([])
@@ -28,10 +29,7 @@ function SetList() {
       <div className="sets-grid">
         {sets.map(set => (
           <Link key={set.id} to={`/set/${set.id}`}>
-            <div className="set-card">
-              <h2>{set.name}</h2>
-              {/* Más información del set */}
-            </div>
+            <SetView set={set} />
           </Link>
         ))}
       </div>

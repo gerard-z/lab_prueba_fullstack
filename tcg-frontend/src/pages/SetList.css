@@ -5,3 +5,11 @@
   justify-content: center;
   padding: 20px;
 }
+
+.sets-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
