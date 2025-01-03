@@ -20,15 +20,15 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
       # Agregar el volumen para el archivo de inicialización
-      - ../resources/:/docker-entrypoint-initdb.d/
+      - ./resources/:/docker-entrypoint-initdb.d/
 
   backend:
     build:
-      context: .
+      context: ./tcg-backend
       dockerfile: ./app/Dockerfile
     image: backend-tcg:latest
     volumes:
-      - ./app:/app
+      - ./tcg-backend/app:/app
     ports:
       - 8080:8080
     depends_on:
@@ -43,5 +43,20 @@ services:
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
       - BUCKET_NAME=images
 
+  frontend:
+    build:
+      context: ./tcg-frontend
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./tcg-frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8080
+    depends_on:
+      - backend
+
 volumes:
   postgres-data:
+
