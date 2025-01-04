@@ -4,7 +4,7 @@ import repository.cards as cards
 from typing import List
 from pydantic import NonNegativeInt, PositiveInt
 from schemas.sets import Set, SetDetail
-from schemas.cards import Card
+from schemas.cards import CardImage
 from dependencies.base import get_generic_session
 from repository.session import SessionDAL
 from dependencies.sets import check_set_id, get_set_by_id
@@ -28,7 +28,7 @@ def get_sets(
 # @param limit: int - El número de cards a devolver
 # @param set_id: str - El id del set
 # @return: List[Card] - Una lista de cards
-@router.get("/{set_id}/cards", response_model=List[Card])
+@router.get("/{set_id}/cards", response_model=List[CardImage])
 def get_cards_by_set_id(
     skip: NonNegativeInt = 0,
     limit: PositiveInt = 100,

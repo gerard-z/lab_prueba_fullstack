@@ -14,6 +14,10 @@ class Card(OrmBaseModel):
     number: str
     rarity: str
 
+# Esquema de una card con imágenes
+class CardImage(Card):
+    images: list[Image]
+
 # Esquema de una card con sus imágenes y mercados
 class CardDetail(Card):
     images: list[Image]

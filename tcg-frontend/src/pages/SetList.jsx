@@ -12,7 +12,6 @@ function SetList() {
       try {
         const response = await fetch(`${API_URL}/sets`)
         const data = await response.json()
-        console.log(data)
         setSets(data)
       } catch (error) {
         console.error('Error al obtener los sets:', error)
