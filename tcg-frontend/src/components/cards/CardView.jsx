@@ -18,19 +18,14 @@ import './CardView.css'
 function CardView({card, width = 'auto', height = 'auto'}) {
 
   return (
-    <div className='set-view' style={{width: width, height: height}}>
-      <img className='set-image' src={card.images[0].url} alt={card.name} />
-      <h1 className='set-name'>{card.name}</h1>
-      <div className="set-info">
-        <p className='set-date'><span>{card.release_date}</span></p>
-        <p className='set-print'><span>{card.rarity}</span></p>
-        <p className='set-total'>{card.subtypes.map(type => (
+    <div className='card-view' style={{width: width, height: height}}>
+      <img className='card-image' src={card.images[0].url} alt={card.name} />
+      <h1 className='card-name'>{card.name}</h1>
+      <div className="card-info">
+        <p className='card-total'>{card.types.map(type => (
           <span key={type}>{type}</span>
         ))}</p>
-        <p className='set-total'>{card.types.map(type => (
-          <span key={type}>{type}</span>
-        ))}</p>
-        <p className='set-ptcgo'><span>{card.supertype}</span></p>        
+        {/* <p className='set-ptcgo'><span>{card.supertype}</span></p> */}
       </div>
     </div>
   )

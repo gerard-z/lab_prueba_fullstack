@@ -1,48 +1,44 @@
-.set-view {
+.card-view {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0;
     border-radius: 10px;
     transition: background-color 0.25s, transform 0.25s;
     transition: scale 0.25s;
+    z-index: 0;
 }
 
-.set-view:hover {
+.card-view:hover {
     background-color: var(--hover-background);
     scale: 1.1;
+    z-index: 10;
 }
 
-.set-name {
+.card-name {
     font-size: 1rem;
-    margin: 1rem 0;
     font-weight: 800;
     color: var(--text-special-color);
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
-    img {
-        margin-right: 0.5rem;
-    }
 }
 
-.set-image {
-    height: 100px;
-    margin: 1rem 0;
+.card-image {
+    height: 200px;
     object-fit: contain;
 }
 
-.set-info p {
+.card-info p {
     width: 100%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.set-ptcgo {
+.card-ptcgo {
     color: var(--text-color);
     opacity: 0.8;
 }
