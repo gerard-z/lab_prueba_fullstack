@@ -101,3 +101,15 @@ Se evaluará:
 # Respuesta
 
 Prueba técnica realizada por *Gerard Cathalifaud Salazar* de una página web simple para ver cartas del pokemon tcg. Utiliza una base de datos en *PostgreSQL*, y se construyó un backend con una API REST en *Python (FastAPI)*. El frontend, por otro lado, se creó con *React + Vite* y se utilizó *TailwindCSS* para su estilizado. Todo se encuentra en contenedores docker para facilitar su deploy.
+
+## Instrucciones
+
+Para ejecutar la aplicación, deberá crear un archivo `.env` en la carpeta principal del proyecto (junto al docker-compose.yml) que contenga los siguientes valores:
+```
+DATABASE_USER=ash
+DATABASE_HOST=<algunhost>
+DATABASE_PASSWORD=<algunaclave>
+DATABASE_NAME=<algunnombre>
+DATABASE_PORT=<algunpuerto>
+```
+Luego de eso, ejecutará en la terminal `docker-compose up`, y se encendará la base de datos en el puerto indicado, el backend en localhost:8080 y el frontend en localhost:5173
