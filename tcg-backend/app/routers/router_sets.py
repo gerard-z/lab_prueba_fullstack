@@ -4,7 +4,7 @@ import repository.cards as cards
 from typing import List
 from pydantic import NonNegativeInt, PositiveInt
 from schemas.sets import Set, SetDetail
-from schemas.cards import CardImage
+from schemas.cards import CardImage, CardCount
 from dependencies.base import get_generic_session
 from repository.session import SessionDAL
 from dependencies.sets import check_set_id, get_set_by_id
@@ -22,6 +22,18 @@ def get_sets(
     session: SessionDAL = Depends(get_generic_session),
 ):
     return sets.get_sets(skip, limit, session)
+
+# Devuelve el número de cartas de un set
+# @param set_id: str - El id del set
+# @param session: SessionDAL - La sesión de la base de datos
+# @return: int - El número de cartas del set
+@router.get("/{set_id}/size", response_model=CardCount)
+def get_card_size(
+    set_id: str = Depends(check_set_id),
+    session: SessionDAL = Depends(get_generic_session),
+):
+    total = sets.get_set_size(set_id, session)
+    return {"total": total}
 
 # Devuelve una lista de cards de un set
 # @param skip: int - El número de cards a omitir

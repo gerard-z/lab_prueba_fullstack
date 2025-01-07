@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 import repository.cards as cards
-from schemas.cards import CardDetail, CardImage
+from schemas.cards import CardDetail, CardImage, CardCount
 from dependencies.base import get_generic_session
 from repository.session import SessionDAL
 from fastapi import Depends
@@ -21,6 +21,16 @@ def get_sets(
 ):
     return cards.get_cards(skip, limit, session)
 
+# Devuelve el número de cartas
+# @param session: SessionDAL - La sesión de la base de datos
+# @return: int - El número de cartas
+@router.get("/size", response_model=CardCount)
+def get_card_size(
+    session: SessionDAL = Depends(get_generic_session),
+):
+    total = cards.get_card_size(session)
+    return {"total": total}
+
 # Obtiene una card por su id
 # @param id: str - El id de la card
 # @param session: SessionDAL - La sesión de la base de datos
@@ -31,3 +41,4 @@ def get_card_by_id(
     session: SessionDAL = Depends(get_generic_session),
 ):
     return cards.get_card_by_id(id, session)
+

@@ -1,5 +1,4 @@
 from schemas.base import OrmBaseModel
-from datetime import date, datetime
 from schemas.image import Image
 from schemas.market import Market
 
@@ -22,3 +21,6 @@ class CardImage(Card):
 class CardDetail(Card):
     images: list[Image]
     markets: list[Market]
+
+class CardCount(OrmBaseModel):
+    total: int

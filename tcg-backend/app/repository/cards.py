@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import select, func
 from models.card import Card
 from repository.session import SessionDAL
 
@@ -25,3 +25,10 @@ def get_cards_by_set_id(set_id: str, skip: int, limit: int, session: SessionDAL)
 # @return: Card - La card
 def get_card_by_id(id: str, session: SessionDAL):
     return session.get(select(Card).where(Card.id == id))
+
+# Obtiene el número de cartas
+# @param session: SessionDAL - La sesión de la base de datos
+# @return: int - El número de cartas
+def get_card_size(session: SessionDAL):
+    result = session.get_scalar(select(func.count(Card.id)).select_from(Card))
+    return result
