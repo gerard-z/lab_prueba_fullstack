@@ -21,6 +21,48 @@ function CardDetail() {
     fetchCard()
   }, [cardId])
 
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const card = document.querySelector('.card-detail-image');
+      if (!card) return;
+
+      const cardRect = card.getBoundingClientRect();
+      const cardCenterX = cardRect.left + cardRect.width / 2;
+      const cardCenterY = cardRect.top + cardRect.height / 2;
+      
+      const mouseX = e.clientX - cardCenterX;
+      const mouseY = e.clientY - cardCenterY;
+      
+      // Calcular el ángulo de rotación basado en la posición del ratón
+      const rotateY = (mouseX / cardRect.width) * 20; // max 20 grados
+      const rotateX = -(mouseY / cardRect.height) * 20; // max 20 grados
+
+      // Aplicar la transformación
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    };
+
+    const handleMouseLeave = () => {
+      const card = document.querySelector('.card-detail-image');
+      if (!card) return;
+      
+      // Resetear la transformación suavemente
+      card.style.transform = 'rotateX(0) rotateY(0)';
+    };
+
+    const container = document.querySelector('.card-image-container');
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      container.addEventListener('mouseleave', handleMouseLeave);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('mousemove', handleMouseMove);
+        container.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+  }, [card]); // Dependencia del efecto
+
   if (!card) return <div>Cargando...</div>
 
   return (

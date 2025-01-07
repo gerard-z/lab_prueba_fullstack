@@ -14,13 +14,62 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  perspective: 1000px;
+  padding: 2rem;
 }
 
 .card-detail-image {
   max-width: 100%;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(0, 0, 0, 0.1),
+    0 0 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card-image-container:hover {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate3d(0, 1, 0, 0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate3d(0, 1, 0, 3deg);
+  }
+  100% {
+    transform: translateY(0) rotate3d(0, 1, 0, 0deg);
+  }
+}
+
+/* Efecto de brillo holográfico */
+.card-detail-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    125deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(255, 255, 255, 0.3) 40%,
+    transparent 60%
+  );
+  mix-blend-mode: overlay;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card-detail-image:hover::before {
+  opacity: 1;
 }
 
 .card-info-container {
