@@ -23,7 +23,7 @@ function SearchBar() {
       <input
         type="text"
         className="search-input"
-        placeholder="Buscar por nombre, rareza o tipo..."
+        placeholder="Buscar por nombre o rareza..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
