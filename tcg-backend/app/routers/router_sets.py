@@ -29,11 +29,11 @@ def get_sets(
 # @return: int - El número de cartas del set
 @router.get("/{set_id}/size", response_model=CardCount)
 def get_card_size(
-    set_id: str = Depends(check_set_id),
+    set: Set = Depends(get_set_by_id),
     session: SessionDAL = Depends(get_generic_session),
 ):
-    total = sets.get_set_size(set_id, session)
-    return {"total": total}
+    total = sets.get_set_size(set.id, session)
+    return {"total": total, "name": set.name}
 
 # Devuelve una lista de cards de un set
 # @param skip: int - El número de cards a omitir

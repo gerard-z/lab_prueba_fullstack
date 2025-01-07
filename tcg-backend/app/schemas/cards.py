@@ -24,3 +24,4 @@ class CardDetail(Card):
 
 class CardCount(OrmBaseModel):
     total: int
+    name: str

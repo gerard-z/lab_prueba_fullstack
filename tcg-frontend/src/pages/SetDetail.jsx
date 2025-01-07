@@ -10,6 +10,7 @@ function SetDetail() {
   const [cards, setCards] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
+  const [setName, setSetName] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const cardsPerPage = 20 // Ajusta según necesites
 
@@ -18,6 +19,7 @@ function SetDetail() {
       const response = await fetch(`${API_URL}/sets/${setId}/size`)
       const data = await response.json()
       setTotalPages(Math.ceil(data.total / cardsPerPage))
+      setSetName(data.name)
     }
     fetchTotalCards()
   }, [])
@@ -48,7 +50,7 @@ function SetDetail() {
 
   return (
     <div className="container">
-      <h1>Cartas del Set</h1>
+      <h1>Cartas del Set <span className="set-title">{setName}</span></h1>
       <div className="cards-grid">
         {cards.map(card => (
           <Link key={card.id} to={`/card/${card.id}`}>
