@@ -53,9 +53,15 @@
   margin-bottom: 2rem;
 }
 
-.card-specs-table td {
-  padding: 0.75rem;
+.card-specs-table tr {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid #eee;
+}
+
+.card-specs-table td {
+  width: 50%;
+  padding: 0.75rem;
 }
 
 .spec-label {
@@ -78,6 +84,7 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .market-link {

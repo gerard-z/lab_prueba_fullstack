@@ -96,3 +96,8 @@ Se evaluará:
 - Implementación de las características opcionales (si aplica).
 
 ¡Buena suerte y que la creatividad te acompañe!
+
+
+# Respuesta
+
+Prueba técnica realizada por *Gerard Cathalifaud Salazar* de una página web simple para ver cartas del pokemon tcg. Utiliza una base de datos en *PostgreSQL*, y se construyó un backend con una API REST en *Python (FastAPI)*. El frontend, por otro lado, se creó con *React + Vite* y se utilizó *TailwindCSS* para su estilizado. Todo se encuentra en contenedores docker para facilitar su deploy.
