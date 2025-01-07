@@ -8,7 +8,10 @@ import './SetDetail.css'
 function SetDetail() {
   const { setId } = useParams()
   const [cards, setCards] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(() => {
+    // Recuperar la página guardada o usar 1 como valor predeterminado
+    return parseInt(localStorage.getItem('setDetailPage')) || 1
+  })
   const [totalPages, setTotalPages] = useState(1)
   const [setName, setSetName] = useState('')
   const [isLoading, setIsLoading] = useState(true)
@@ -43,6 +46,7 @@ function SetDetail() {
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage)
+    localStorage.setItem('setDetailPage', newPage)
     window.scrollTo(0, 0)
   }
 

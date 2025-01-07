@@ -7,7 +7,10 @@ import './CardList.css'
 
 function CardList() {
   const [cards, setCards] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(() => {
+    // Recuperar la página guardada o usar 1 como valor predeterminado
+    return parseInt(localStorage.getItem('cardListPage')) || 1
+  })
   const [totalPages, setTotalPages] = useState(1)
   const [isLoading, setIsLoading] = useState(true)
   const cardsPerPage = 20 // Ajusta según necesites
@@ -40,6 +43,7 @@ function CardList() {
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage)
+    localStorage.setItem('cardListPage', newPage)
     window.scrollTo(0, 0)
   }
 

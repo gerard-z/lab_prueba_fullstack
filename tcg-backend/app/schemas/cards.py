@@ -22,6 +22,9 @@ class CardDetail(Card):
     images: list[Image]
     markets: list[Market]
 
-class CardCount(OrmBaseModel):
+class SetCardCount(OrmBaseModel):
     total: int
     name: str
+
+class CardCount(OrmBaseModel):
+    total: int

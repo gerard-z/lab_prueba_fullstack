@@ -7,6 +7,12 @@ import { useTheme } from './hooks/utils/useTheme'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import './App.css'
 
+const clearCardListPage = () => {
+  if (window.location.pathname !== '/card') {
+    localStorage.removeItem('cardListPage')
+  }
+}
+
 function App() {
 
   const { nightMode, toggleNightMode } = useTheme()
@@ -17,7 +23,7 @@ function App() {
         <Link to="/">Pokemon Trading Card Game</Link>
         <nav>
           <NavLink  to="/">Inicio</NavLink >
-          <NavLink  to="/card">Cartas</NavLink >
+          <NavLink onClick={clearCardListPage}  to="/card">Cartas</NavLink >
           <button onClick={toggleNightMode} className="night-mode-button">
             {nightMode ? <FaSun className="text-yellow-500 text-2xl" /> : <FaMoon className="text-gray-500 text-2xl" />}
           </button>

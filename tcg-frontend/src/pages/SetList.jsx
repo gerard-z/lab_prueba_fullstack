@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { API_URL } from '../components/utils/config'
 import SetView from '../components/sets/SetView'
 import './SetList.css'
+
 function SetList() {
   const [sets, setSets] = useState([])
 
