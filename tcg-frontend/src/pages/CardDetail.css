@@ -1,0 +1,161 @@
+.card-detail-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.card-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  perspective: 1000px;
+  padding: 2rem;
+}
+
+.card-detail-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 25px;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 0 20px rgba(0, 0, 0, 0.1),
+    0 0 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card-image-container:hover {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate3d(0, 1, 0, 0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate3d(0, 1, 0, 3deg);
+  }
+  100% {
+    transform: translateY(0) rotate3d(0, 1, 0, 0deg);
+  }
+}
+
+/* Efecto de brillo holográfico */
+.card-detail-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    125deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(255, 255, 255, 0.3) 40%,
+    transparent 60%
+  );
+  mix-blend-mode: overlay;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card-detail-image:hover::before {
+  opacity: 1;
+}
+
+.card-info-container {
+  padding: 1rem;
+}
+
+.card-header {
+  margin-bottom: 2rem;
+}
+
+.card-title {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--text-special-colo);
+}
+
+.card-rarity {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.card-specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.card-specs-table tr {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+}
+
+.card-specs-table td {
+  width: 50%;
+  padding: 0.75rem;
+}
+
+.spec-label {
+  font-weight: bold;
+  color: #666;
+  width: 30%;
+}
+
+.market-info {
+  margin-top: 2rem;
+}
+
+.market-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-special-color);
+}
+
+.market-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.market-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #4a90e2;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.market-link:hover {
+  background-color: #357abd;
+}
+
+@media (max-width: 768px) {
+  .card-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-image-container {
+    margin-bottom: 2rem;
+  }
+} 

@@ -229,3 +229,7 @@ class SessionDAL:
     # @return: None - Entrega un error si no se puede cerrar la sesión
     def close(self):
         self.db.close()
+
+    def get_scalar(self, statement):
+        result = self.db.execute(statement).scalar()
+        return result
