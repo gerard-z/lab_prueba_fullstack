@@ -14,7 +14,6 @@ function SetDetail() {
       try {
         const response = await fetch(`${API_URL}/sets/${setId}/cards`)
         const data = await response.json()
-        console.log(data)
         setCards(data)
       } catch (error) {
         console.error('Error al obtener las cartas del set:', error)
