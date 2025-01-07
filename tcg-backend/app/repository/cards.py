@@ -2,6 +2,14 @@ from sqlalchemy import select
 from models.card import Card
 from repository.session import SessionDAL
 
+# Obtiene las cartas
+# @param skip: int - El número de cartas a saltar
+# @param limit: int - El número de cartas a obtener
+# @param session: SessionDAL - La sesión de la base de datos
+# @return: list[Card] - Las cartas
+def get_cards(skip: int, limit: int, session: SessionDAL):
+    return session.get_all(select(Card), skip, limit)
+
 # Obtiene las cards de un set
 # @param set_id: str - El id del set
 # @param skip: int - El número de cards a saltar

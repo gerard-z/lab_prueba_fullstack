@@ -2,6 +2,7 @@ import { Link, NavLink, BrowserRouter as Router, Routes, Route } from 'react-rou
 import SetList from './pages/SetList'
 import SetDetail from './pages/SetDetail'
 import CardDetail from './pages/CardDetail'
+import CardList from './pages/CardList'
 import { useTheme } from './hooks/utils/useTheme'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import './App.css'
@@ -16,7 +17,7 @@ function App() {
         <Link to="/">Pokemon Trading Card Game</Link>
         <nav>
           <NavLink  to="/">Inicio</NavLink >
-          <NavLink  to="/cards">Cartas</NavLink >
+          <NavLink  to="/card">Cartas</NavLink >
           <button onClick={toggleNightMode} className="night-mode-button">
             {nightMode ? <FaSun className="text-yellow-500 text-2xl" /> : <FaMoon className="text-gray-500 text-2xl" />}
           </button>
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SetList />} />
         <Route path="/set/:setId" element={<SetDetail />} />
+        <Route path="/card" element={<CardList />} />
         <Route path="/card/:cardId" element={<CardDetail />} />
       </Routes>
     </Router>
