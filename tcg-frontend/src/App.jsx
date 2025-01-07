@@ -6,6 +6,7 @@ import CardList from './pages/CardList'
 import { useTheme } from './hooks/utils/useTheme'
 import { FaMoon, FaSun } from 'react-icons/fa'
 import './App.css'
+import SearchBar from './components/common/SearchBar'
 
 const clearCardListPage = () => {
   if (window.location.pathname !== '/card') {
@@ -22,6 +23,7 @@ function App() {
       <header>    
         <Link to="/">Pokemon Trading Card Game</Link>
         <nav>
+          <SearchBar />
           <NavLink  to="/">Inicio</NavLink >
           <NavLink onClick={clearCardListPage}  to="/card">Cartas</NavLink >
           <button onClick={toggleNightMode} className="night-mode-button">

@@ -1,4 +1,5 @@
-from sqlalchemy import select, func
+from sqlalchemy import select, func, or_, cast, String
+from sqlalchemy.dialects.postgresql import ARRAY
 from models.card import Card
 from repository.session import SessionDAL
 
@@ -32,3 +33,29 @@ def get_card_by_id(id: str, session: SessionDAL):
 def get_card_size(session: SessionDAL):
     result = session.get_scalar(select(func.count(Card.id)).select_from(Card))
     return result
+
+def search_cards(query: str, skip: int, limit: int, session: SessionDAL):
+    search = f"%{query}%"
+    statement = (
+        select(Card)
+        .where(
+            or_(
+                Card.name.ilike(search),
+                Card.rarity.ilike(search),
+            )
+        )
+    )
+    return session.get_all(statement, skip, limit)
+
+def search_cards_count(query: str, session: SessionDAL):
+    search = f"%{query}%"
+    statement = (
+        select(func.count(Card.id))
+        .where(
+            or_(
+                Card.name.ilike(search),
+                Card.rarity.ilike(search),
+            )
+        )
+    )
+    return session.get_scalar(statement)
